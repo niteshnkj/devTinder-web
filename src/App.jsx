@@ -1,13 +1,19 @@
-import Footer from "./components/Footer";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Login from "./components/Login";
-import Navbar from "./components/Navbar";
+import Feed from "./components/Feed";
+import Body from "./components/Body";
 
 function App() {
   return (
     <>
-      <Navbar />
-      <Login />
-      <Footer />
+      <BrowserRouter basename="/">
+        <Routes>
+          <Route path="/" element={<Body />}>
+            <Route path="/" element={<Feed />}></Route>
+            <Route path="/login" element={<Login />}></Route>
+          </Route>
+        </Routes>
+      </BrowserRouter>
     </>
   );
 }

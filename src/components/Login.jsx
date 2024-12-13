@@ -1,10 +1,12 @@
 import axios from "axios";
 import { useState } from "react";
 import { BASE_URL } from "../utils/constants";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [emailId, setEmailId] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
   const handleLogin = async () => {
     try {
       const res = await axios.post(
@@ -12,6 +14,7 @@ const Login = () => {
         { emailId, password },
         { withCredentials: true }
       );
+      navigate("/");
       console.log(res);
     } catch (error) {
       console.log(error);
