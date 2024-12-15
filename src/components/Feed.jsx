@@ -24,7 +24,7 @@ const Feed = () => {
   useEffect(() => {
     feedData();
   }, []);
-  console.log(feed);
+//   console.log(feed);
   return (
     feed && (
       <div className="flex justify-center">
