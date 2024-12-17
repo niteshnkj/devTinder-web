@@ -6,7 +6,7 @@ import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { addUser } from "../utils/userSlice";
 import { useEffect } from "react";
-
+//todo add dark and light mode
 const Body = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -20,14 +20,14 @@ const Body = () => {
       });
       dispatch(addUser(res.data));
     } catch (error) {
-      if (error.status === 400) {
+      if (error.status === 401) {
         navigate("/login");
       }
     }
   };
   useEffect(() => {
     fetchUser();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

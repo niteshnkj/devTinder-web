@@ -4,7 +4,7 @@ import { BASE_URL } from "../utils/constants";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addUser } from "../utils/userSlice";
-
+//todo use a better component design for this part
 const Login = () => {
   const [emailId, setEmailId] = useState("");
   const [password, setPassword] = useState("");
@@ -23,7 +23,6 @@ const Login = () => {
       console.log(res);
     } catch (error) {
       setError(error.response.data);
-      console.log(error.response.data);
     }
   };
   return (

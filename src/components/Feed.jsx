@@ -23,6 +23,7 @@ const Feed = () => {
   };
   useEffect(() => {
     feedData();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 //   console.log(feed);
   return (
