@@ -21,7 +21,7 @@ const EditProfile = ({ user }) => {
     setError("");
     try {
       const res = await axios.patch(
-        BASE_URL + "profile/edit",
+        BASE_URL + "/profile/edit",
         { firstName, lastName, photoUrl, age, gender, about, skills },
         {
           withCredentials: true,
@@ -116,8 +116,8 @@ const EditProfile = ({ user }) => {
                   value={gender}
                   onChange={(e) => setGender(e.target.value)}
                 >
-                  <option disabled selected>
-                    {(gender && user.gender) || "select your gender"}
+                  <option disabled defaultValue={gender && user.gender}>
+                    {/* {(gender && user.gender) || "select your gender"} */}
                   </option>
                   <option value="male">male</option>
                   <option value="female">female</option>
