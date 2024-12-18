@@ -20,6 +20,7 @@ const Connections = () => {
   //   console.log(connections);
   useEffect(() => {
     fetchConnections();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   if (!connections) return;
 

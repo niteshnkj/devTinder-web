@@ -7,6 +7,7 @@ import { BASE_URL } from "../utils/constants";
 
 const Navbar = () => {
   const user = useSelector((store) => store.user);
+  const connectionRequests = useSelector((store) => store.requests);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const handleLogout = async () => {
@@ -86,7 +87,9 @@ const Navbar = () => {
               <li>
                 <Link to={"/requests"} className="justify-between">
                   requests
-                  <span className="badge">New</span>
+                  {connectionRequests?.length > 0 && (
+                    <span className="badge">New</span>
+                  )}
                 </Link>
               </li>
               <li>
