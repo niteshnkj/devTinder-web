@@ -7,9 +7,11 @@ const requestSlice = createSlice({
     addRequest: (state, action) => {
       return action.payload;
     },
-    // eslint-disable-next-line no-unused-vars
+     
     removeRequest: (state, action) => {
-      return null;
+      // whatever id i'm giving you remove it from the existing state
+      const newArray = state.filter((req) => req._id !== action.payload);
+      return newArray;
     },
   },
 });

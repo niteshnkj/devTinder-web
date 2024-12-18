@@ -81,12 +81,13 @@ const Navbar = () => {
               </li>
               <li>
                 <Link to={"/connections"} className="justify-between">
-                  connections
+                  Connections
                 </Link>
               </li>
               <li>
                 <Link to={"/requests"} className="justify-between">
-                  requests
+                  Requests
+                  {/* on login it should be visible */}
                   {connectionRequests?.length > 0 && (
                     <span className="badge">New</span>
                   )}

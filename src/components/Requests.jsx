@@ -2,11 +2,25 @@ import axios from "axios";
 import { BASE_URL } from "../utils/constants";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addRequest } from "../utils/requestSlice";
+import { addRequest, removeRequest } from "../utils/requestSlice";
 
 const Requests = () => {
   const connectionRequests = useSelector((store) => store.requests);
   const dispatch = useDispatch();
+
+  const handleRequests = async (status, _id) => {
+    try {
+      await axios.post(
+        BASE_URL + "/request/review/" + status + "/" + _id,
+        {},
+        { withCredentials: true }
+      );
+      dispatch(removeRequest(_id));
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const fetchConnectionRequests = async () => {
     try {
       const res = await axios.get(BASE_URL + "/user/requests/received", {
@@ -19,6 +33,7 @@ const Requests = () => {
   };
   useEffect(() => {
     fetchConnectionRequests();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   if (!connectionRequests) return;
 
@@ -28,9 +43,9 @@ const Requests = () => {
     <div className="text-center my-10">
       <h1 className="text-bold text-white text-3xl">Requests</h1>
 
-      {connectionRequests.map((connection) => {
+      {connectionRequests.map((request) => {
         const { _id, firstName, lastName, photoUrl, age, gender, about } =
-          connection.fromUserId;
+          request.fromUserId;
 
         return (
           <div
@@ -54,13 +69,13 @@ const Requests = () => {
             <div>
               <button
                 className="btn btn-primary mx-2"
-                // onClick={() => reviewRequest("rejected", request._id)}
+                onClick={() => handleRequests("rejected", request._id)}
               >
                 Reject
               </button>
               <button
                 className="btn btn-secondary mx-2"
-                // onClick={() => reviewRequest("accepted", request._id)}
+                onClick={() => handleRequests("accepted", request._id)}
               >
                 Accept
               </button>

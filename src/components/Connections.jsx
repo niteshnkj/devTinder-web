@@ -3,7 +3,7 @@ import { BASE_URL } from "../utils/constants";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addConnection } from "../utils/connectionSlice";
-
+//Todo remove connection feature
 const Connections = () => {
   const connections = useSelector((store) => store.connection);
   const dispatch = useDispatch();
@@ -20,7 +20,7 @@ const Connections = () => {
   //   console.log(connections);
   useEffect(() => {
     fetchConnections();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   if (!connections) return;
 
