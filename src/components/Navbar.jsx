@@ -3,6 +3,7 @@ import { removeUser } from "../utils/userSlice";
 import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 import { BASE_URL } from "../utils/constants";
+import { clearFeed } from "../utils/feedSlice";
 //todo add a night and day toggle button
 
 const Navbar = () => {
@@ -20,6 +21,7 @@ const Navbar = () => {
         }
       );
       dispatch(removeUser());
+      dispatch(clearFeed());
       navigate("/login");
     } catch (error) {
       console.log(error);

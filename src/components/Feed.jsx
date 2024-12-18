@@ -23,9 +23,12 @@ const Feed = () => {
   };
   useEffect(() => {
     feedData();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-//   console.log(feed);
+  //   console.log(feed);
+  if (!feed) return;
+  if (feed.length <= 0)
+    return <div className="flex justify-center my-10">No new Users are available at the moment.</div>;
   return (
     feed && (
       <div className="flex justify-center">
