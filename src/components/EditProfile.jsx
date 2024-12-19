@@ -54,7 +54,13 @@ const EditProfile = ({ user }) => {
                   placeholder="firstName"
                   className="input input-bordered w-full max-w-xs"
                   value={firstName}
-                  onChange={(e) => setFirstName(e.target.value)}
+                  onChange={(e) => {
+                    const value = e.target.value;
+                    const capitalizedValue =
+                      value.charAt(0).toUpperCase() +
+                      value.slice(1).toLowerCase();
+                    setFirstName(capitalizedValue);
+                  }}
                 />
               </label>
               <label className="form-control w-full max-w-xs my-2">
@@ -66,7 +72,13 @@ const EditProfile = ({ user }) => {
                   placeholder="LastName"
                   className="input input-bordered w-full max-w-xs"
                   value={lastName}
-                  onChange={(e) => setLastName(e.target.value)}
+                  onChange={(e) => {
+                    const value = e.target.value;
+                    const capitalizedValue =
+                      value.charAt(0).toUpperCase() +
+                      value.slice(1).toLowerCase();
+                    setLastName(capitalizedValue);
+                  }}
                 />
               </label>
               <label className="form-control w-full max-w-xs my-2">
